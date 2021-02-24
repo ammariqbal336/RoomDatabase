@@ -13,6 +13,12 @@
         <action
             android:id="@+id/actionSaveNote"
             app:destination="@id/addHomeFragment" />
+        <argument
+            android:name="note"
+            app:nullable="true"
+            app:argType="com.ixs.testing.roomdatabase.db.Note"
+            android:defaultValue="@null" />
+
     </fragment>
     <fragment
         android:id="@+id/addHomeFragment"

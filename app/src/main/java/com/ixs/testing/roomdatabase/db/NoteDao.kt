@@ -1,19 +1,24 @@
 package com.ixs.testing.roomdatabase.db
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface NoteDao {
 
     @Insert
-    fun SaveNote(note : Note)
+    suspend fun SaveNote(note : Note)
 
-    @Query("SELECT * FROM note")
-    fun getNote() :List<Note>
+    @Query("SELECT * FROM note ORDER BY id DESC")
+    suspend fun getNote() :List<Note>
 
     @Insert
-    fun SaveAllNotes(vararg note: Note)
+    suspend fun SaveAllNotes(vararg note: Note)
+
+    @Update
+    suspend fun UpdateNote(note: Note)
+
+
+    @Delete
+    suspend fun DeleteNote(note: Note)
 
 }
